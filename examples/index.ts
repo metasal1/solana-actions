@@ -18,7 +18,7 @@ app.get('/actions.json', (c) => c.json({
   "rules": [
     {
       "pathPattern": "/swap/**",
-      "apiPath": "https://actions.dialect.to/api/jupiter/swap/**"
+      "apiPath": "/api/future/swap/**"
     }
   ]
 }))

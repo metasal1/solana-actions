@@ -1,8 +1,0 @@
-{
-    "rules": [
-        {
-            "pathPattern": "/swap/**",
-            "apiPath": "https://actions.dialect.to/api/jupiter/swap/**"
-        }
-    ]
-}
