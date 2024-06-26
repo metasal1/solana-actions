@@ -12,7 +12,7 @@ import {
 } from '../../spec/actions-spec';
 import jupiterApi from './jupiter-api';
 
-export const JUPITER_LOGO =
+export const FUTURE_LOGO =
   'https://pbs.twimg.com/profile_banners/1447702017779007489/1717408555/1500x500';
 
 const SWAP_AMOUNT_USD_OPTIONS = [10, 100, 1000];
@@ -29,7 +29,7 @@ app.openapi(
   createRoute({
     method: 'get',
     path: '/{tokenPair}',
-    tags: ['Jupiter Swap'],
+    tags: ['FUTURE Swap'],
     request: {
       params: z.object({
         tokenPair: z.string().openapi({
@@ -55,7 +55,7 @@ app.openapi(
 
     if (!inputTokenMeta || !outputTokenMeta) {
       return Response.json({
-        icon: JUPITER_LOGO,
+        icon: FUTURE_LOGO,
         label: 'Not Available',
         title: `Buy ${outputToken}`,
         description: `Buy ${outputToken} with ${inputToken}.`,
@@ -68,7 +68,7 @@ app.openapi(
 
     const amountParameterName = 'amount';
     const response: ActionsSpecGetResponse = {
-      icon: JUPITER_LOGO,
+      icon: FUTURE_LOGO,
       label: `Buy ${outputTokenMeta.symbol}`,
       title: `Buy ${outputTokenMeta.symbol}`,
       description: `Buy ${outputTokenMeta.symbol} with ${inputTokenMeta.symbol}. Choose a USD amount of ${inputTokenMeta.symbol} from the options below, or enter a custom amount.`,
@@ -76,10 +76,10 @@ app.openapi(
         actions: [
           ...SWAP_AMOUNT_USD_OPTIONS.map((amount) => ({
             label: `${US_DOLLAR_FORMATTING.format(amount)}`,
-            href: `/api/jupiter/swap/${tokenPair}/${amount}`,
+            href: `/api/future/swap/${tokenPair}/${amount}`,
           })),
           {
-            href: `/api/jupiter/swap/${tokenPair}/{${amountParameterName}}`,
+            href: `/api/future/swap/${tokenPair}/{${amountParameterName}}`,
             label: `Buy ${outputTokenMeta.symbol}`,
             parameters: [
               {
@@ -100,7 +100,7 @@ app.openapi(
   createRoute({
     method: 'get',
     path: '/{tokenPair}/{amount}',
-    tags: ['Jupiter Swap'],
+    tags: ['FUTURE Swap'],
     request: {
       params: z.object({
         tokenPair: z.string().openapi({
@@ -137,7 +137,7 @@ app.openapi(
 
     if (!inputTokenMeta || !outputTokenMeta) {
       return Response.json({
-        icon: JUPITER_LOGO,
+        icon: FUTURE_LOGO,
         label: 'Not Available',
         title: `Buy ${outputToken}`,
         description: `Buy ${outputToken} with ${inputToken}.`,
@@ -149,7 +149,7 @@ app.openapi(
     }
 
     const response: ActionsSpecGetResponse = {
-      icon: JUPITER_LOGO,
+      icon: FUTURE_LOGO,
       label: `Buy ${outputTokenMeta.symbol}`,
       title: `Buy ${outputTokenMeta.symbol} with ${inputTokenMeta.symbol}`,
       description: `Buy ${outputTokenMeta.symbol} with ${inputTokenMeta.symbol}.`,
@@ -163,7 +163,7 @@ app.openapi(
   createRoute({
     method: 'post',
     path: '/{tokenPair}/{amount}',
-    tags: ['Jupiter Swap'],
+    tags: ['FUTURE Swap'],
     request: {
       params: z.object({
         tokenPair: z.string().openapi({
