@@ -13,7 +13,7 @@ import {
 import jupiterApi from './jupiter-api';
 
 export const FUTURE_LOGO =
-  'https://pbs.twimg.com/profile_banners/1447702017779007489/1717408555/1500x500';
+  'https://www.futureprotocol.io/blink1.png';
 
 const SWAP_AMOUNT_USD_OPTIONS = [10, 100, 1000];
 const DEFAULT_SWAP_AMOUNT_USD = 10;
