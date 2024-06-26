@@ -1,8 +1,8 @@
 {
     "rules": [
         {
-            "pathPattern": "/",
-            "apiPath": "/api/future/swap/sol-future"
+            "pathPattern": "/swap/**",
+            "apiPath": "https://actions.dialect.to/api/jupiter/swap/**"
         }
     ]
 }

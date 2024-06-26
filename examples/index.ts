@@ -5,6 +5,7 @@ import future from './future/route';
 import { cors } from 'hono/cors';
 import { swaggerUI } from '@hono/swagger-ui';
 import { OpenAPIHono } from '@hono/zod-openapi';
+import { serveStatic } from '@hono/node-server/serve-static'
 
 const app = new OpenAPIHono();
 app.use('/*', cors());
@@ -13,6 +14,14 @@ app.use('/*', cors());
 app.route('/api/donate', donate);
 app.route('/api/jupiter/swap', jupiterSwap);
 app.route('/api/future/swap', future);
+app.get('/actions.json', (c) => c.json({
+  "rules": [
+    {
+      "pathPattern": "/swap/**",
+      "apiPath": "https://actions.dialect.to/api/jupiter/swap/**"
+    }
+  ]
+}))
 // </--Actions-->
 
 app.doc('/doc', {
